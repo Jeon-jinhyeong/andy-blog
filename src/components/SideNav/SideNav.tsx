@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement } from 'react';
 
 /** @jsxRuntime classic */
 /** @jsx jsx */
@@ -49,8 +49,8 @@ export interface SideNavProps {
 
 const pubUrl = process.env.PUBLIC_URL;
 
-export const SideNav = (props: SideNavProps) => {
-  const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
+export const SideNav = (props: SideNavProps): ReactElement => {
+  // const [selectedMenuIndex, setSelectedMenuIndex] = useState(0);
   // let selectedMenuIndex = 0
 
   // useEffect(() => {

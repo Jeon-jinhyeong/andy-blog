@@ -2,13 +2,13 @@ import React from 'react';
 
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { jsx, css, useTheme, Theme } from '@emotion/react';
+import { jsx, css } from '@emotion/react';
 
 import { useHistory } from 'react-router-dom';
 import { useAndy } from '../../services/api';
 import { Post } from '../../object-model/model';
 
-import { AsyncEffectState, AsyncState, PromiseFn, useAsyncEffect } from '../../services/async';
+import { AsyncEffectState, PromiseFn, useAsyncEffect } from '../../services/async';
 
 const styleCss = css`
   display: flex;
@@ -50,7 +50,7 @@ export const List = () => {
   >(andy.post.getPosts, [], []);
 
   const deletePost = (postId: number) => {
-    andy.post.deletePost(postId).then((success: number) => {
+    andy.post.deletePost(postId).then(() => {
       asyncEffectState.run();
     });
   };
@@ -76,7 +76,7 @@ export const List = () => {
     <div className="List" css={[styleCss]}>
       {asyncEffectState.state &&
         asyncEffectState.state.data &&
-        asyncEffectState.state.data.map((post: Post, idx: number) => {
+        asyncEffectState.state.data.map((post: Post) => {
           return (
             <div className="post-item">
               <div>{post.title}</div>

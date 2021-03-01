@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 /** @jsxRuntime classic */
 /** @jsx jsx */
@@ -19,7 +19,7 @@ export interface HeaderProps {
   imageUrl?: string;
 }
 
-export const Header = (props: HeaderProps) => {
+export const Header = (props: HeaderProps): ReactElement => {
   return (
     <div className="Header" css={style()}>
       {props.imageUrl && <img alt="no" src={props.imageUrl} />}

@@ -29,6 +29,12 @@ export type AsyncEffectState<D, E, F> = {
 
 function asyncReducer<D, E>(state: AsyncState<D, E>, action: AsyncAction<D, E>): AsyncState<D, E> {
   switch (action.type) {
+    default:
+      return {
+        loading: false,
+        data: null,
+        error: null,
+      };
     case 'LOADING':
       return {
         loading: true,
@@ -52,7 +58,7 @@ function asyncReducer<D, E>(state: AsyncState<D, E>, action: AsyncAction<D, E>):
 
 export type PromiseFn<T> = (...args: T[]) => Promise<T>;
 
-function useAsync<D, E, F extends PromiseFn<D>>(promiseFn: F, deps = []) {
+function useAsync<D, E, F extends PromiseFn<D>>(promiseFn: F) {
   const [state, dispatch] = useReducer(asyncReducer, {
     loading: false,
     data: null,

@@ -1,4 +1,4 @@
-import { Comment, Post } from '../object-model/model';
+import { Comment } from '../object-model/model';
 
 const comments: Comment[] = [
   {
@@ -69,13 +69,13 @@ export const CommentServiceMock = {
     });
     return Promise.resolve(foundComment);
   },
-  writeComment: (comment: Comment) => {
+  writeComment: () => {
     return Promise.resolve(1);
   },
-  updateComment: (id: number, comment: Comment) => {
+  updateComment: () => {
     return Promise.resolve(1);
   },
-  deleteComment: (id: number) => {
+  deleteComment: () => {
     return Promise.resolve(1);
   },
 };

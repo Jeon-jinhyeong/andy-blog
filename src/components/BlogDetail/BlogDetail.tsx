@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useAndy } from '../../services/api';
-import { AndyService, Post, PostService } from '../../object-model/model';
+import { AndyService, Post } from '../../object-model/model';
 import { AsyncEffectState, PromiseFn, useAsyncEffect } from '../../services/async';
 
 export const BlogDetail = () => {
@@ -9,8 +9,8 @@ export const BlogDetail = () => {
   const params: any = useParams();
 
   const asyncEffectState: AsyncEffectState<Post | undefined, Error, PromiseFn<Post | undefined>> = useAsyncEffect(
-    andy.post.getPost,
-    [parseInt(params.postId)],
+    andy.post.getPost as never,
+    params.postId as never,
     [],
   );
 
